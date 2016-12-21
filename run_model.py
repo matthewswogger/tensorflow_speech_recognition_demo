@@ -12,6 +12,7 @@ HEIGHT = 80  # (max) length of utterance
 CLASSES = 10  # digits
 
 batch = word_batch = speech_data.mfcc_batch_generator(BATCH_SIZE)
+# batch = speech_data.mfcc_batch_generator(2400)
 X, Y = next(batch)
 trainX, trainY = X, Y
 testX, testY = X, Y #overfit for now
@@ -46,6 +47,17 @@ model = tflearn.DNN(net, tensorboard_verbose=0)
 #     model.save(model_name)
 
 model.load("saved_model/epoch_2000.tfl")
-_y=model.predict(X)
-print (_y[0])
-print (Y[0])
+import numpy as np
+_y = np.array(model.predict(X))
+Y = np.array(Y)
+bool_arr = np.all(np.array(_y) == np.array(Y), axis=1)
+print (float(np.sum(bool_arr))/bool_arr.shape[0])
+
+
+
+
+
+
+
+
+#
