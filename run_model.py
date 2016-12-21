@@ -32,27 +32,20 @@ net = tflearn.regression(net, optimizer='adam', learning_rate=LEARNING_RATE,
 
 
 model = tflearn.DNN(net, tensorboard_verbose=0)
-###################################################################
-# while 1: # training_iters
-#     model.fit(trainX, trainY, n_epoch=10, validation_set=(testX, testY),
-#                                         show_metric=True, batch_size=BATCH_SIZE)
-#     _y=model.predict(X)
-#
-# model.save("tflearn.lstm.model")
-# print (_y)
-# print (y)
 
-#################################################################
 # Training
-EPOCHS = 20
-epochs_performed = 0
-for _ in xrange(100):
-    # Fit model
-    model.fit(trainX, trainY, n_epoch=EPOCHS, validation_set=(testX, testY),
-                                        show_metric=True, batch_size=BATCH_SIZE)
-    # Save model
-    epochs_performed += 20
-    save = "saved_model/epoch_{}.tfl".format(epochs_performed)
-    # print (save)
-    model.save(save)
-    # model.save("saved_model/20_epoch.tfl")
+# EPOCHS = 20
+# epochs_performed = 0
+# for _ in xrange(100):
+#     # Fit model
+#     model.fit(trainX, trainY, n_epoch=EPOCHS, validation_set=(testX, testY),
+#                                         show_metric=True, batch_size=BATCH_SIZE)
+#     # Save model
+#     epochs_performed += 20
+#     model_name = "saved_model/epoch_{}.tfl".format(epochs_performed)
+#     model.save(model_name)
+
+model.load("saved_model/epoch_2000.tfl")
+_y=model.predict(X)
+print (_y[0])
+print (Y[0])
