@@ -9,6 +9,13 @@ Run the following code in terminal. This will take a couple hours to train fully
 
 `python run_model.py`
 
+Model Performance
+===========
+
+After 3000 epochs the model has about 93% accuracy. It might get better
+performance if I keep training it but 3000 was around 3 hours of training time
+and I was happy with the performance. 
+
 
 Credits
 ===========
