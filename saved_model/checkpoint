@@ -1,0 +1,2 @@
+model_checkpoint_path: "epoch_3000.tfl"
+all_model_checkpoint_paths: "epoch_3000.tfl"
